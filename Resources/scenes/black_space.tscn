@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://distayaxudrpd"]
+
+[ext_resource type="Texture2D" uid="uid://ctd4ttjsea88x" path="res://Resources/Space_Black.png" id="1_lf2kp"]
+
+[node name="WhiteSpace" type="Sprite2D"]
+position = Vector2(273, 174)
+texture = ExtResource("1_lf2kp")

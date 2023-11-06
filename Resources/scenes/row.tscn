@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://dui14f8kvthe0"]
+
+[ext_resource type="PackedScene" uid="uid://clxyyr6yv5sju" path="res://Resources/scenes/tile.tscn" id="1_cxuae"]
+
+[node name="Row0" type="Node2D"]
+position = Vector2(0, -894)
+
+[node name="Tile0" parent="." instance=ExtResource("1_cxuae")]
+position = Vector2(-894, 0)
+
+[node name="Tile1" parent="." instance=ExtResource("1_cxuae")]
+position = Vector2(-640, 0)
+
+[node name="Tile2" parent="." instance=ExtResource("1_cxuae")]
+position = Vector2(-385, 0)
+
+[node name="Tile3" parent="." instance=ExtResource("1_cxuae")]
+position = Vector2(-130, 0)
+
+[node name="Tile4" parent="." instance=ExtResource("1_cxuae")]
+position = Vector2(126, 0)
+
+[node name="Tile5" parent="." instance=ExtResource("1_cxuae")]
+position = Vector2(382, 0)
+
+[node name="Tile6" parent="." instance=ExtResource("1_cxuae")]
+position = Vector2(638, 0)
+
+[node name="Tile7" parent="." instance=ExtResource("1_cxuae")]
+position = Vector2(893, 0)

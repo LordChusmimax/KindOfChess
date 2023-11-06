@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://s1ryqb44c4ke"]
+
+[ext_resource type="Script" path="res://Resources/Scripts/chessBoard.gd" id="1_sxtkp"]
+[ext_resource type="Texture2D" uid="uid://bqymfc30vy7eb" path="res://Resources/chessboard.png" id="2_fe4y1"]
+[ext_resource type="PackedScene" uid="uid://dui14f8kvthe0" path="res://Resources/scenes/row.tscn" id="3_r61u6"]
+[ext_resource type="Script" path="res://Resources/scenes/DraggedPieceScript.gd" id="4_6khsn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_judc1"]
+size = Vector2(2629, 2915.5)
+
+[node name="Scene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-4, 0)
+zoom = Vector2(0.25, 0.25)
+
+[node name="Board" type="Node2D" parent="."]
+script = ExtResource("1_sxtkp")
+
+[node name="Sprite" type="Sprite2D" parent="Board"]
+texture = ExtResource("2_fe4y1")
+
+[node name="Row0" parent="Board" instance=ExtResource("3_r61u6")]
+position = Vector2(0, 892)
+
+[node name="Row1" parent="Board" instance=ExtResource("3_r61u6")]
+position = Vector2(0, 644)
+
+[node name="Row2" parent="Board" instance=ExtResource("3_r61u6")]
+position = Vector2(0, 386)
+
+[node name="Row3" parent="Board" instance=ExtResource("3_r61u6")]
+position = Vector2(0, 131)
+
+[node name="Row4" parent="Board" instance=ExtResource("3_r61u6")]
+position = Vector2(0, -131)
+
+[node name="Row5" parent="Board" instance=ExtResource("3_r61u6")]
+position = Vector2(0, -387)
+
+[node name="Row6" parent="Board" instance=ExtResource("3_r61u6")]
+position = Vector2(0, -635)
+
+[node name="Row7" parent="Board" instance=ExtResource("3_r61u6")]
+
+[node name="Back" type="Area2D" parent="Board"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Back"]
+z_index = -1
+position = Vector2(-2327, -7)
+shape = SubResource("RectangleShape2D_judc1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Board/Back"]
+z_index = -1
+position = Vector2(2347, 25)
+shape = SubResource("RectangleShape2D_judc1")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Board/Back"]
+z_index = -1
+position = Vector2(-70, -2494.25)
+shape = SubResource("RectangleShape2D_judc1")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Board/Back"]
+z_index = -1
+position = Vector2(-9, 2475)
+shape = SubResource("RectangleShape2D_judc1")
+
+[node name="Button_Sprite" type="Sprite2D" parent="Board"]
+position = Vector2(1218, -635)
+scale = Vector2(5, 5)
+
+[node name="Button" type="Button" parent="Board/Button_Sprite"]
+offset_right = 170.0
+offset_bottom = 31.0
+text = "Go Back to last move"
+metadata/_edit_use_anchors_ = true
+
+[node name="DraggedPiece" type="Node2D" parent="."]
+script = ExtResource("4_6khsn")
+
+[node name="Sprite2D" type="Sprite2D" parent="DraggedPiece"]
+z_index = 15
+scale = Vector2(7.594, 7.594)

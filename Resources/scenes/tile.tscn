@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://clxyyr6yv5sju"]
+
+[ext_resource type="Script" path="res://TileScript.gd" id="1_md4hf"]
+[ext_resource type="Texture2D" uid="uid://drykiinsn318y" path="res://Resources/Space.png" id="2_ym0eb"]
+[ext_resource type="Texture2D" uid="uid://bkquf2wgxipre" path="res://Resources/Pawn.png" id="3_ljmjt"]
+[ext_resource type="Script" path="res://Piece.gd" id="4_qc43c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04xcg"]
+size = Vector2(246, 245)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ai8am"]
+
+[node name="Tile" type="Node2D"]
+script = ExtResource("1_md4hf")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+modulate = Color(0.847059, 0.776471, 0.101961, 0.490196)
+z_index = 3
+scale = Vector2(8.125, 8.125)
+texture = ExtResource("2_ym0eb")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_04xcg")
+
+[node name="Piece" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(-1.5, 1.5)
+scale = Vector2(7.59375, 7.59375)
+texture = ExtResource("3_ljmjt")
+script = ExtResource("4_qc43c")
+
+[node name="Possible" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.278431, 0.756863, 0.521569, 1)
+z_index = 12
+position = Vector2(-2.38419e-06, 2.52724e-05)
+scale = Vector2(-35.8951, -35.8951)
+texture = SubResource("CanvasTexture_ai8am")

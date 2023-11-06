@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://cw0g807xod15l"]
+
+[ext_resource type="Script" path="res://MultiplayerInterface.gd" id="1_h8gi5"]
+[ext_resource type="PackedScene" uid="uid://s1ryqb44c4ke" path="res://Resources/scenes/chessBoard.tscn" id="2_du2b2"]
+[ext_resource type="Theme" uid="uid://cf23ww402bgtr" path="res://Resources/scenes/multiplayer_controler.tres" id="2_g3r2s"]
+[ext_resource type="Script" path="res://Resources/scenes/Gotm_config.gd" id="4_w6xdf"]
+
+[node name="MultiplayerControler" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_h8gi5")
+
+[node name="Chess_Board" parent="." instance=ExtResource("2_du2b2")]
+visible = false
+
+[node name="Local_Game_Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -584.0
+offset_top = -533.0
+offset_right = 616.0
+offset_bottom = -252.0
+theme = ExtResource("2_g3r2s")
+text = "Local Game"
+
+[node name="Host_Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -583.0
+offset_top = -177.0
+offset_right = 617.0
+offset_bottom = 98.0
+theme = ExtResource("2_g3r2s")
+text = "Host"
+
+[node name="Join_Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -591.0
+offset_top = 206.0
+offset_right = 609.0
+offset_bottom = 481.0
+theme = ExtResource("2_g3r2s")
+text = "Join"
+
+[node name="Gotm_config" type="Node" parent="."]
+script = ExtResource("4_w6xdf")

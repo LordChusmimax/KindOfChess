@@ -1,0 +1,263 @@
+[gd_scene load_steps=12 format=3 uid="uid://s1ryqb44c4ke"]
+
+[ext_resource type="Script" path="res://Resources/Scripts/chessBoard.gd" id="1_sxtkp"]
+[ext_resource type="Texture2D" uid="uid://bqymfc30vy7eb" path="res://Resources/chessboard.png" id="2_fe4y1"]
+[ext_resource type="PackedScene" uid="uid://dui14f8kvthe0" path="res://Resources/scenes/row.tscn" id="3_r61u6"]
+[ext_resource type="Script" path="res://Resources/scenes/DraggedPieceScript.gd" id="4_6khsn"]
+[ext_resource type="Script" path="res://Resources/scenes/PromoteMenu.gd" id="4_m5dba"]
+[ext_resource type="Texture2D" uid="uid://dmihpgu88c3wi" path="res://Resources/Horse.png" id="4_v3ge0"]
+[ext_resource type="Texture2D" uid="uid://utygomrshcy2" path="res://Resources/Bishop.png" id="6_y7ygn"]
+[ext_resource type="Texture2D" uid="uid://do83amfasld0u" path="res://Resources/Tower.png" id="7_nx08m"]
+[ext_resource type="Texture2D" uid="uid://bf2ee87mmgnsm" path="res://Resources/Queen.png" id="8_geivj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_judc1"]
+size = Vector2(2629, 2915.5)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_rcni6"]
+
+[node name="Scene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-4, 0)
+zoom = Vector2(0.25, 0.25)
+
+[node name="Board" type="Node2D" parent="."]
+position = Vector2(0, -48)
+script = ExtResource("1_sxtkp")
+
+[node name="Sprite" type="Sprite2D" parent="Board"]
+texture = ExtResource("2_fe4y1")
+
+[node name="Row0" parent="Board" instance=ExtResource("3_r61u6")]
+position = Vector2(0, 892)
+
+[node name="Row1" parent="Board" instance=ExtResource("3_r61u6")]
+position = Vector2(0, 644)
+
+[node name="Row2" parent="Board" instance=ExtResource("3_r61u6")]
+position = Vector2(0, 386)
+
+[node name="Row3" parent="Board" instance=ExtResource("3_r61u6")]
+position = Vector2(0, 131)
+
+[node name="Row4" parent="Board" instance=ExtResource("3_r61u6")]
+position = Vector2(0, -131)
+
+[node name="Row5" parent="Board" instance=ExtResource("3_r61u6")]
+position = Vector2(0, -387)
+
+[node name="Row6" parent="Board" instance=ExtResource("3_r61u6")]
+position = Vector2(0, -635)
+
+[node name="Row7" parent="Board" instance=ExtResource("3_r61u6")]
+
+[node name="Back" type="Area2D" parent="Board"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Back"]
+z_index = -1
+position = Vector2(-2327, -7)
+shape = SubResource("RectangleShape2D_judc1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Board/Back"]
+z_index = -1
+position = Vector2(2347, 25)
+shape = SubResource("RectangleShape2D_judc1")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Board/Back"]
+z_index = -1
+position = Vector2(-70, -2494.25)
+shape = SubResource("RectangleShape2D_judc1")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Board/Back"]
+z_index = -1
+position = Vector2(-9, 2475)
+shape = SubResource("RectangleShape2D_judc1")
+
+[node name="Button_Sprite" type="Sprite2D" parent="Board"]
+position = Vector2(1218, -635)
+scale = Vector2(5, 5)
+
+[node name="Button" type="Button" parent="Board/Button_Sprite"]
+offset_right = 170.0
+offset_bottom = 31.0
+text = "Go Back to last move"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button_Sprite2" type="Sprite2D" parent="Board"]
+position = Vector2(1218, -387)
+scale = Vector2(5, 5)
+
+[node name="Button" type="Button" parent="Board/Button_Sprite2"]
+offset_left = 1.3999
+offset_right = 171.4
+offset_bottom = 31.0
+text = "Reset"
+metadata/_edit_use_anchors_ = true
+
+[node name="Scoreboard" type="Node2D" parent="Board"]
+position = Vector2(-2113, -829)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Board/Scoreboard"]
+offset_right = 98.0
+offset_bottom = 187.0
+scale = Vector2(10, 10)
+size_flags_vertical = 2
+text = "CheckMate
+"
+
+[node name="PromoteMenu" type="Node2D" parent="Board"]
+visible = false
+position = Vector2(1786, 373)
+script = ExtResource("4_m5dba")
+
+[node name="Table" type="Sprite2D" parent="Board/PromoteMenu"]
+modulate = Color(0.454902, 0.454902, 0.454902, 1)
+z_index = 20
+position = Vector2(102, 400)
+scale = Vector2(200, 800)
+texture = SubResource("CanvasTexture_rcni6")
+
+[node name="HorseButton" type="TextureButton" parent="Board/PromoteMenu"]
+z_index = 21
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = 22.0
+offset_right = 48.0
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5.00332, 5.00332)
+texture_normal = ExtResource("4_v3ge0")
+
+[node name="BishopButton" type="TextureButton" parent="Board/PromoteMenu"]
+z_index = 21
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 18.0
+offset_top = 214.0
+offset_right = 50.0
+offset_bottom = 246.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5.00332, 5.00332)
+texture_normal = ExtResource("6_y7ygn")
+
+[node name="RookButton" type="TextureButton" parent="Board/PromoteMenu"]
+z_index = 21
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 419.0
+offset_right = 48.0
+offset_bottom = 451.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5.00332, 5.00332)
+texture_normal = ExtResource("7_nx08m")
+
+[node name="QueenButton" type="TextureButton" parent="Board/PromoteMenu"]
+z_index = 21
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = 618.0
+offset_right = 53.0
+offset_bottom = 650.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(5.00332, 5.00332)
+texture_normal = ExtResource("8_geivj")
+
+[node name="BottomNode" type="Node2D" parent="Board/PromoteMenu"]
+position = Vector2(0, 800)
+
+[node name="DraggedPiece" type="Node2D" parent="."]
+script = ExtResource("4_6khsn")
+
+[node name="Sprite2D" type="Sprite2D" parent="DraggedPiece"]
+z_index = 15
+scale = Vector2(7.594, 7.594)
+
+[node name="Secret_board" type="Node2D" parent="."]
+position = Vector2(20230, 17061)
+script = ExtResource("1_sxtkp")
+secret = true
+
+[node name="Sprite" type="Sprite2D" parent="Secret_board"]
+texture = ExtResource("2_fe4y1")
+
+[node name="Row0" parent="Secret_board" instance=ExtResource("3_r61u6")]
+position = Vector2(0, 892)
+
+[node name="Row1" parent="Secret_board" instance=ExtResource("3_r61u6")]
+position = Vector2(0, 644)
+
+[node name="Row2" parent="Secret_board" instance=ExtResource("3_r61u6")]
+position = Vector2(0, 386)
+
+[node name="Row3" parent="Secret_board" instance=ExtResource("3_r61u6")]
+position = Vector2(0, 131)
+
+[node name="Row4" parent="Secret_board" instance=ExtResource("3_r61u6")]
+position = Vector2(0, -131)
+
+[node name="Row5" parent="Secret_board" instance=ExtResource("3_r61u6")]
+position = Vector2(0, -387)
+
+[node name="Row6" parent="Secret_board" instance=ExtResource("3_r61u6")]
+position = Vector2(0, -635)
+
+[node name="Row7" parent="Secret_board" instance=ExtResource("3_r61u6")]
+
+[node name="Back" type="Area2D" parent="Secret_board"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Secret_board/Back"]
+z_index = -1
+position = Vector2(-2327, -7)
+shape = SubResource("RectangleShape2D_judc1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Secret_board/Back"]
+z_index = -1
+position = Vector2(2347, 25)
+shape = SubResource("RectangleShape2D_judc1")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Secret_board/Back"]
+z_index = -1
+position = Vector2(-70, -2494.25)
+shape = SubResource("RectangleShape2D_judc1")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Secret_board/Back"]
+z_index = -1
+position = Vector2(-9, 2475)
+shape = SubResource("RectangleShape2D_judc1")
+
+[node name="Button_Sprite" type="Sprite2D" parent="Secret_board"]
+position = Vector2(1218, -635)
+scale = Vector2(5, 5)
+
+[node name="Button" type="Button" parent="Secret_board/Button_Sprite"]
+offset_right = 170.0
+offset_bottom = 31.0
+text = "Go Back to last move"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button_Sprite2" type="Sprite2D" parent="Secret_board"]
+position = Vector2(1218, -387)
+scale = Vector2(5, 5)
+
+[node name="Button" type="Button" parent="Secret_board/Button_Sprite2"]
+offset_left = 1.3999
+offset_right = 171.4
+offset_bottom = 31.0
+text = "Reset"
+metadata/_edit_use_anchors_ = true
